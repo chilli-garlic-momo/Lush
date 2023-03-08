@@ -8,10 +8,14 @@ pygame.init()
 screen = pygame.display.set_mode([700, 500])
 caption = pygame.display.set_caption('Lush')
 
+#fonts
+font_s32 = pygame.font.Font('Malkor-Bold.ttf', 32)
+font_s40 = pygame.font.Font('Malkor-Bold.ttf', 40)
+font_s72 = pygame.font.Font('Malkor-Bold.ttf', 72)
+
 # high score
 highscore_record = 'Last high score created by: '
 new_highscore_created = 'NEW HIGH SCORE CREATED!'
-highscore_font = pygame.font.Font('Malkor-Bold.ttf', 32)
 recordX = 150
 recordY = 275
 # value
@@ -32,7 +36,6 @@ else:
 background_sound = mixer.Sound('Game-music.wav')
 
 # instructions
-instructions_font = pygame.font.Font('Malkor-Bold.ttf', 32)
 instructions_str1 = 'Press S to start'
 instructions_str2 = 'Press SPACE BAR to jump over obstacles'
 instructions_str3 = 'AVOID'
@@ -69,12 +72,10 @@ playerY_change = 0
 
 # score
 score_val = 0
-score_font = pygame.font.Font('Malkor-Bold.ttf', 40)
 score_textX = 10
 score_textY = 10
 
 # game over
-gameover_font = pygame.font.Font('Malkor-Bold.ttf', 72)
 gameover_textX = 100
 gameover_textY = 200
 gameover = False
@@ -121,30 +122,30 @@ coin_state = 'moving'
 
 def show_highscore(x, y):
     if score_val//2500 < high_score:
-        highscore = highscore_font.render(highscore_record + highscore_creator,True, (225,225,225))
+        highscore = font_s32.render(highscore_record + highscore_creator,True, (225,225,225))
         screen.blit(highscore, (x, y))
     else:
-        highscore = highscore_font.render(new_highscore_created, True, (225, 225, 225))
+        highscore = font_s32.render(new_highscore_created, True, (225, 225, 225))
         screen.blit(highscore, (x, y))
 
 def instruction1(x, y):
-    ins1 = instructions_font.render(instructions_str1, True, (225, 225, 225))
+    ins1 = font_s32.render(instructions_str1, True, (225, 225, 225))
     screen.blit(ins1, (x, y))
 
 def instruction2(x, y):
-    ins2 = instructions_font.render(instructions_str2, True, (225, 225, 225))
+    ins2 = font_s32.render(instructions_str2, True, (225, 225, 225))
     screen.blit(ins2, (x, y))
 
 def instruction3(x, y):
-    ins3 = instructions_font.render(instructions_str3, True, (225, 225, 225))
+    ins3 = font_s32.render(instructions_str3, True, (225, 225, 225))
     screen.blit(ins3, (x, y))
 
 def instruction4(x, y):
-    ins4 = instructions_font.render(instructions_str4, True, (225, 225, 225))
+    ins4 = font_s32.render(instructions_str4, True, (225, 225, 225))
     screen.blit(ins4, (x, y))
 
 def instruction5(x, y):
-    ins5 = instructions_font.render(instructions_str5, True, (225, 225, 225))
+    ins5 = font_s32.render(instructions_str5, True, (225, 225, 225))
     screen.blit(ins5, (x, y))
 
 def instruction_image1(x, y):
@@ -162,11 +163,11 @@ def player(x, y):
     screen.blit(playerImg, (x, y))
 
 def show_score(x, y):
-    score = score_font.render('Score: '+ str(score_val//2500),True, (225,225,225))
+    score = font_s40.render('Score: '+ str(score_val//2500),True, (225,225,225))
     screen.blit(score, (x, y))
 
 def gameover_display(x, y):
-    end_txt = gameover_font.render('G A M E   O V E R !', True, (225, 225, 225))
+    end_txt = font_s72.render('G A M E   O V E R !', True, (225, 225, 225))
     screen.blit(end_txt, (x, y))
 
 def obstacle1(x, y):
@@ -269,10 +270,10 @@ while run:
                         playerX_change = 0
                         playerY_change = 0
                         score_val = 0
-                        score_font = pygame.font.Font('Malkor-Bold.ttf', 40)
+                        font_s40 = pygame.font.Font('Malkor-Bold.ttf', 40)
                         score_textX = 10
                         score_textY = 10
-                        gameover_font = pygame.font.Font('Malkor-Bold.ttf', 72)
+                        font_s72 = pygame.font.Font('Malkor-Bold.ttf', 72)
                         gameover_textX = 100
                         gameover_textY = 200
                         gameover = False
